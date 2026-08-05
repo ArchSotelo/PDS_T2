@@ -1,19 +1,12 @@
 package edu.pe.cibertec.saucedemo.tasks;
 
-import edu.pe.cibertec.saucedemo.ui.InventoryPage;
 import net.serenitybdd.screenplay.Performable;
-import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.playwright.Target;
-import net.serenitybdd.screenplay.playwright.interactions.SelectFromOptions;
 
+/** English compatibility facade for {@link OrdenarProductos}. */
 public class SortProducts {
 
     public static Performable by(String sortOperation) {
-        return Task.where("{0} sorts prodcuts by '" + sortOperation + "'",
-                SelectFromOptions.byVisibleText(sortOperation)
-                        .from(Target.the("").locatedBy(InventoryPage.ORDER_PRODUCT_SELECT))
-
-        );
+        return OrdenarProductos.por(sortOperation);
     }
 
 }

@@ -2,8 +2,8 @@ package edu.pe.cibertec.saucedemo.stepdefinitions;
 
 import edu.pe.cibertec.saucedemo.questions.TheProductDetail;
 import edu.pe.cibertec.saucedemo.questions.TheProductPrice;
-import edu.pe.cibertec.saucedemo.tasks.ClickOnProduct;
-import edu.pe.cibertec.saucedemo.tasks.SortProducts;
+import edu.pe.cibertec.saucedemo.tasks.VerificarDetalle;
+import edu.pe.cibertec.saucedemo.tasks.OrdenarProductos;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.screenplay.actors.OnStage;
@@ -16,7 +16,7 @@ public class ProductStepDefinitions {
     @And("she sorts the products by {string}")
     public void sheSortsTheProductsBy(String sortOption) {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                SortProducts.by(sortOption)
+                OrdenarProductos.por(sortOption)
         );
     }
 
@@ -30,14 +30,14 @@ public class ProductStepDefinitions {
     @And("the last product should have price {string}")
     public void theLastProductShouldHavePrice(String price) {
         OnStage.theActorInTheSpotlight().should(
-                seeThat(TheProductPrice.ofLasItem(), equalTo(price))
+                seeThat(TheProductPrice.ofLastItem(), equalTo(price))
         );
     }
 
     @And("she clicks on the product {string}")
     public void sheClicksOnTheProduct(String productName) {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                ClickOnProduct.named(productName)
+                VerificarDetalle.delProducto(productName)
         );
     }
 
